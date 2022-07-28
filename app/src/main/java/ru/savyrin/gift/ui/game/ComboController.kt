@@ -2,12 +2,12 @@ package ru.savyrin.gift.ui.game
 
 class ComboController {
 
-    private val neededCombo = FATALITY_COMBO.map { comboChar ->
+    private val neededCombo = FATALITY_COMBO.split(" ").map { comboChar ->
         when (comboChar) {
-            'L' -> ComboMoves.LEFT
-            'R' -> ComboMoves.RIGHT
-            'U' -> ComboMoves.UP
-            'D' -> ComboMoves.DOWN
+            "L" -> ComboMoves.LEFT
+            "R" -> ComboMoves.RIGHT
+            "U" -> ComboMoves.UP
+            "D" -> ComboMoves.DOWN
             else -> ComboMoves.CLICK
         }
     }
@@ -16,11 +16,15 @@ class ComboController {
     fun appendCurrentCombo(comboMove: ComboMoves) {
         val currentComboSize = currentCombo.size
         val comboMoveInNeeded = neededCombo[currentComboSize]
-        when  {
-            (comboMove != comboMoveInNeeded) -> currentCombo.clear()
-            (comboMove == neededCombo[0]) -> currentCombo.add(comboMove)
-            else -> currentCombo.add(comboMove)
+
+        if (comboMove == ComboMoves.CLICK && comboMove != comboMoveInNeeded) {
+            return
         }
+
+        if (comboMove != comboMoveInNeeded) {
+            currentCombo.clear()
+        }
+        currentCombo.add(comboMove)
     }
 
     fun isComboFinished(): Boolean {
