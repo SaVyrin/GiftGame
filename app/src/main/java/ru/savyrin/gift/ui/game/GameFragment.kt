@@ -28,12 +28,16 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeGameState()
+        setPresentClickListener()
     }
 
     private fun observeGameState() {
         viewModel.gameState.observe(viewLifecycleOwner) { gameState ->
             gameState?.let {
                 when (gameState) {
+                    GameState.NOT_STARTED -> {
+                        viewModel.startGame()
+                    }
                     GameState.FINISHED -> {
                         findNavController().navigate(R.id.action_gameFragment_to_finishFragment)
                     }
@@ -42,6 +46,12 @@ class GameFragment : Fragment() {
                     }
                 }
             }
+        }
+    }
+
+    private fun setPresentClickListener() {
+        binding.presentImage.setOnClickListener {
+            viewModel.beatPresent()
         }
     }
 
