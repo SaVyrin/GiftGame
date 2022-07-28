@@ -1,7 +1,8 @@
-package ru.savyrin.gift
+package ru.savyrin.gift.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import ru.savyrin.gift.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
