@@ -7,16 +7,25 @@
     tools:context=".ui.game.GameFragment">
 
     <TextView
+        style="@style/Text.PresentHealth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/game_health_background_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/present_health_tv" />
+
+    <TextView
         android:id="@+id/present_health_tv"
+        style="@style/Text.PresentHealth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="999999"
-        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="999999" />
 
     <ImageView
         android:id="@+id/present_image"
@@ -24,46 +33,53 @@
         android:layout_height="0dp"
         android:scaleType="fitCenter"
         android:src="@drawable/present"
-        app:layout_constraintTop_toBottomOf="@+id/present_health_tv"
+        app:layout_constraintBottom_toTopOf="@id/left_arrow_btn"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/materialButton3"/>
+        app:layout_constraintTop_toBottomOf="@+id/present_health_tv" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/materialButton5"
-        app:layout_constraintTop_toTopOf="@+id/materialButton5" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/materialButton3"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/materialButton2"
-        app:layout_constraintTop_toTopOf="@+id/materialButton2" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/left_arrow_btn"
+        style="@style/GameButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="36dp"
+        app:icon="@drawable/ic_arrow_back"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/materialButton2"
+        app:layout_constraintEnd_toStartOf="@+id/up_arrow_btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/materialButton5"
+        android:id="@+id/up_arrow_btn"
+        style="@style/GameButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:icon="@drawable/ic_arrow_upward"
+        app:layout_constraintEnd_toStartOf="@+id/down_arrow_btn"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/materialButton4"
-        app:layout_constraintTop_toTopOf="@+id/materialButton4" />
+        app:layout_constraintStart_toEndOf="@+id/left_arrow_btn"
+        app:layout_constraintTop_toTopOf="@+id/left_arrow_btn" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/down_arrow_btn"
+        style="@style/GameButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:icon="@drawable/ic_arrow_downward"
+        app:layout_constraintEnd_toStartOf="@+id/right_arrow_btn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/up_arrow_btn"
+        app:layout_constraintTop_toTopOf="@+id/up_arrow_btn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/right_arrow_btn"
+        style="@style/GameButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:icon="@drawable/ic_arrow_forward"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/down_arrow_btn"
+        app:layout_constraintTop_toTopOf="@+id/down_arrow_btn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

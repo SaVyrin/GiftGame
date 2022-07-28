@@ -2,4 +2,7 @@
 <resources>
     <color name="start_title_color">@color/black</color>
     <color name="start_hint_color">@color/black</color>
+
+    <color name="game_health_color">@color/black</color>
+    <color name="game_health_background_color">@color/gray_almost_transparent</color>
 </resources>
