@@ -1,4 +1,4 @@
-package ru.savyrin.gift
+package ru.savyrin.gift.ui.start
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
