@@ -9,19 +9,20 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gift"
-        android:textSize="48sp"
-        app:layout_constraintBottom_toTopOf="@+id/materialButton"
+        android:text="@string/start_screen_title"
+        android:textAppearance="@style/Text.Start"
+        app:layout_constraintBottom_toTopOf="@+id/hint_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton"
+    <TextView
+        android:id="@+id/hint_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="72dp"
-        android:text="Начать"
+        android:layout_marginBottom="120dp"
+        android:text="@string/start_screen_hint"
+        android:textAppearance="@style/Text.Hint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
