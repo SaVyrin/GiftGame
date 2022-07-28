@@ -1,8 +1,8 @@
 package ru.savyrin.gift.ui.game
 
 class Present(presentHealth: Long) {
-    var health: Long = presentHealth
-    val color = ""
+    private var health: Long = presentHealth
+    private val color = ""
 
     fun beat(damage: Long) {
         val newHealth = health - damage
@@ -14,5 +14,9 @@ class Present(presentHealth: Long) {
 
     fun isOpen(): Boolean {
         return health <= 0
+    }
+
+    fun getHealth(): Long {
+        return health
     }
 }

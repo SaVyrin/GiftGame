@@ -37,6 +37,7 @@ class GameFragment : Fragment() {
                 when (gameState) {
                     GameState.NOT_STARTED -> {
                         viewModel.startGame()
+                        setPresentHealth()
                     }
                     GameState.FINISHED -> {
                         findNavController().navigate(R.id.action_gameFragment_to_finishFragment)
@@ -49,9 +50,15 @@ class GameFragment : Fragment() {
         }
     }
 
+    private fun setPresentHealth() {
+        val presentHealth = viewModel.getPresentHealth()
+        binding.presentHealthTv.text = presentHealth.toString()
+    }
+
     private fun setPresentClickListener() {
         binding.presentImage.setOnClickListener {
             viewModel.beatPresent()
+            setPresentHealth()
         }
     }
 

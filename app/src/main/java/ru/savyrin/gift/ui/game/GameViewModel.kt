@@ -19,6 +19,10 @@ class GameViewModel : ViewModel() {
         game.finish()
     }
 
+    fun getPresentHealth(): Long {
+        return game.getPresentHealth()
+    }
+
     fun beatPresent() {
         game.beatPresent()
         mutableGameState.value = game.getGameState()

@@ -28,6 +28,10 @@ class Game {
         return gameState
     }
 
+    fun getPresentHealth(): Long {
+        return present.getHealth()
+    }
+
     private fun setNewPresent() {
         goToNextLevel()
         val newPresentHealth = PRESENT_HEALTH_MULTIPLAYER.pow(currentGameLevel).toLong()
