@@ -15,16 +15,32 @@ class GameViewModel : ViewModel() {
         game.start()
     }
 
-    fun finishGame() {
-        game.finish()
-    }
-
     fun getPresentHealth(): Long {
         return game.getPresentHealth()
     }
 
     fun beatPresent() {
         game.beatPresent()
+        mutableGameState.value = game.getGameState()
+    }
+
+    fun leftButtonClick() {
+        game.appendLeftCombo()
+        mutableGameState.value = game.getGameState()
+    }
+
+    fun rightButtonClick() {
+        game.appendRightCombo()
+        mutableGameState.value = game.getGameState()
+    }
+
+    fun downButtonClick() {
+        game.appendDownCombo()
+        mutableGameState.value = game.getGameState()
+    }
+
+    fun upButtonClick() {
+        game.appendUpCombo()
         mutableGameState.value = game.getGameState()
     }
 }

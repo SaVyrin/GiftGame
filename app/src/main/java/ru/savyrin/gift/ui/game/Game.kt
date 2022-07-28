@@ -4,15 +4,19 @@ import kotlin.math.pow
 
 class Game {
     private lateinit var present: Present
+
     private var currentGameLevel = INITIAL_GAME_LEVEL
     private var powerMultiplayer = INITIAL_POWER_MULTIPLAYER
+
+    private val comboController = ComboController()
+
     private var gameState = GameState.NOT_FINISHED
 
     fun start() {
         setNewPresent()
     }
 
-    fun finish() {
+    private fun finish() {
         gameState = GameState.FINISHED
     }
 
@@ -21,6 +25,43 @@ class Game {
         present.beat(damage)
         if (present.isOpen()) {
             setNewPresent()
+        }
+        appendClickCombo()
+    }
+
+    private fun appendClickCombo() {
+        comboController.appendCurrentCombo(ComboMoves.CLICK)
+        checkComboFinished()
+        powerMultiplayer = comboController.getComboCount()
+    }
+
+    fun appendLeftCombo() {
+        comboController.appendCurrentCombo(ComboMoves.LEFT)
+        checkComboFinished()
+        powerMultiplayer = comboController.getComboCount()
+    }
+
+    fun appendRightCombo() {
+        comboController.appendCurrentCombo(ComboMoves.RIGHT)
+        checkComboFinished()
+        powerMultiplayer = comboController.getComboCount()
+    }
+
+    fun appendDownCombo() {
+        comboController.appendCurrentCombo(ComboMoves.DOWN)
+        checkComboFinished()
+        powerMultiplayer = comboController.getComboCount()
+    }
+
+    fun appendUpCombo() {
+        comboController.appendCurrentCombo(ComboMoves.UP)
+        checkComboFinished()
+        powerMultiplayer = comboController.getComboCount()
+    }
+
+    private fun checkComboFinished() {
+        if (comboController.isComboFinished()) {
+            finish()
         }
     }
 

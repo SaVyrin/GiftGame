@@ -29,6 +29,10 @@ class GameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeGameState()
         setPresentClickListener()
+        setLeftButtonClickListener()
+        setRightButtonClickListener()
+        setUpButtonClickListener()
+        setDownButtonClickListener()
     }
 
     private fun observeGameState() {
@@ -59,6 +63,30 @@ class GameFragment : Fragment() {
         binding.presentImage.setOnClickListener {
             viewModel.beatPresent()
             setPresentHealth()
+        }
+    }
+
+    private fun setLeftButtonClickListener() {
+        binding.leftArrowBtn.setOnClickListener {
+            viewModel.leftButtonClick()
+        }
+    }
+
+    private fun setRightButtonClickListener() {
+        binding.rightArrowBtn.setOnClickListener {
+            viewModel.rightButtonClick()
+        }
+    }
+
+    private fun setUpButtonClickListener() {
+        binding.upArrowBtn.setOnClickListener {
+            viewModel.upButtonClick()
+        }
+    }
+
+    private fun setDownButtonClickListener() {
+        binding.downArrowBtn.setOnClickListener {
+            viewModel.downButtonClick()
         }
     }
 
