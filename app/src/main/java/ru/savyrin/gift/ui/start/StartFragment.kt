@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import ru.savyrin.gift.R
 import ru.savyrin.gift.databinding.FragmentStartBinding
 
 class StartFragment : Fragment() {
@@ -27,7 +29,7 @@ class StartFragment : Fragment() {
 
     private fun setScreenClickListener() {
         binding.root.setOnClickListener {
-            // TODO navigate to next screen
+            findNavController().navigate(R.id.action_startFragment_to_gameFragment)
         }
     }
 
