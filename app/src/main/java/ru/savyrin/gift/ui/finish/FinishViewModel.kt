@@ -14,7 +14,6 @@ class FinishViewModel(
     private var currentGreetingsIndex = 0
 
     fun getNextGreeting(): String {
-        // TODO fix not all greetings showing
         when {
             noMoreGreetings() -> mutableFinishScreenState.value = FinishScreenState.DONE
             else -> {
@@ -27,6 +26,6 @@ class FinishViewModel(
     }
 
     private fun noMoreGreetings(): Boolean {
-        return currentGreetingsIndex == (greetings.size - 1)
+        return currentGreetingsIndex == greetings.size
     }
 }
