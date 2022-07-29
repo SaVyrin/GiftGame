@@ -20,4 +20,10 @@
         <item name="android:textSize">36sp</item>
         <item name="android:textColor">@color/game_health_color</item>
     </style>
+
+    <style name="Text.Greetings">
+        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/finish_greetings_color</item>
+    </style>
 </resources>

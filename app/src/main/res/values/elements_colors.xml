@@ -5,4 +5,6 @@
 
     <color name="game_health_color">@color/black</color>
     <color name="game_health_background_color">@color/gray_almost_transparent</color>
+
+    <color name="finish_greetings_color">@color/black</color>
 </resources>

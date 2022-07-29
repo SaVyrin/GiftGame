@@ -43,11 +43,11 @@ class FinishFragment : Fragment() {
         viewModel.finishScreenState.observe(viewLifecycleOwner) { screenState ->
             screenState?.let {
                 when (screenState) {
-                    FinishScreenState.SHOWING_GREETINGS -> {
-                        // Do nothing
-                    }
                     FinishScreenState.DONE -> {
                         findNavController().navigate(R.id.action_finishFragment_to_startFragment)
+                    }
+                    FinishScreenState.SHOWING_GREETINGS -> {
+                        // Do nothing
                     }
                 }
             }
