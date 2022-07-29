@@ -5,4 +5,9 @@
 
     <string name="start_screen_title">Gift</string>
     <string name="start_screen_hint">Нажми, чтобы начать</string>
+
+    <string-array name="finish_screen_greetings_text">
+        <item>С днём рождения</item>
+        <item>Будь такой же позитивной</item>
+    </string-array>
 </resources>

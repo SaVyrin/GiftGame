@@ -7,6 +7,7 @@
     tools:context=".ui.finish.FinishFragment">
 
     <TextView
+        android:id="@+id/greetings_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
