@@ -1,9 +1,12 @@
 package ru.savyrin.gift.ui.game
 
+import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.ScaleAnimation
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -63,6 +66,7 @@ class GameFragment : Fragment() {
         binding.presentImage.setOnClickListener {
             viewModel.beatPresent()
             setPresentHealth()
+            startPresentBeatAnimation()
         }
     }
 
@@ -87,6 +91,18 @@ class GameFragment : Fragment() {
     private fun setDownButtonClickListener() {
         binding.downArrowBtn.setOnClickListener {
             viewModel.downButtonClick()
+        }
+    }
+
+    private fun startPresentBeatAnimation() {
+        ValueAnimator.ofFloat(1f, 0.9f, 1f).apply {
+            duration = 100
+            start()
+
+            addUpdateListener { updatedAnimation ->
+                binding.presentImage.scaleX = updatedAnimation.animatedValue as Float
+                binding.presentImage.scaleY = updatedAnimation.animatedValue as Float
+            }
         }
     }
 
