@@ -36,6 +36,6 @@ class ComboController {
     }
 
     companion object {
-        const val FATALITY_COMBO = "L R U D C R L R U D C L D U C C D U D L C R L D U R D U R"
+        const val FATALITY_COMBO = "L R U D C"/*R L R U D C L D U C C D U D L C R L D U R D U R*/
     }
 }
