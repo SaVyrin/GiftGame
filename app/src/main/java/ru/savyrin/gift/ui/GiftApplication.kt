@@ -1,6 +1,7 @@
 package ru.savyrin.gift.ui
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-class GiftApplication : Application() {
-}
+@HiltAndroidApp
+class GiftApplication : Application()

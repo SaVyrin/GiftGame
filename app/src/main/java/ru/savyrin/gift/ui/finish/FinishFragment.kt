@@ -9,10 +9,18 @@ import android.view.animation.Animation
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import ru.savyrin.gift.R
 import ru.savyrin.gift.databinding.FragmentFinishBinding
+import javax.inject.Inject
+import javax.inject.Named
 
+@AndroidEntryPoint
 class FinishFragment : Fragment() {
+
+    @Inject
+    @Named("single")
+    lateinit var textChangeAnimation: AlphaAnimation
 
     private lateinit var viewModelFactory: FinishViewModelFactory
     private val viewModel: FinishViewModel by viewModels { viewModelFactory }
@@ -62,12 +70,6 @@ class FinishFragment : Fragment() {
     }
 
     private fun animateTextChange(nextGreetingText: String) {
-        // TODO добавить в di
-        val textChangeAnimation = AlphaAnimation(1.0f, 0.0f)
-        textChangeAnimation.duration = 500
-        textChangeAnimation.repeatCount = 1
-        textChangeAnimation.repeatMode = Animation.REVERSE
-
         textChangeAnimation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationEnd(animation: Animation?) {}
             override fun onAnimationStart(animation: Animation?) {}

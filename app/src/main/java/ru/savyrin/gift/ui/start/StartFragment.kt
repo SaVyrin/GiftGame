@@ -8,10 +8,18 @@ import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import ru.savyrin.gift.R
 import ru.savyrin.gift.databinding.FragmentStartBinding
+import javax.inject.Inject
+import javax.inject.Named
 
+@AndroidEntryPoint
 class StartFragment : Fragment() {
+
+    @Inject
+    @Named("infinite")
+    lateinit var textAnimation: AlphaAnimation
 
     private var _binding: FragmentStartBinding? = null
     private val binding get() = _binding!!
@@ -27,7 +35,7 @@ class StartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setScreenClickListener()
-        setTextFadingAnimation()
+        startTextFadingAnimation()
     }
 
     private fun setScreenClickListener() {
@@ -36,12 +44,7 @@ class StartFragment : Fragment() {
         }
     }
 
-    private fun setTextFadingAnimation() {
-        // TODO перенести это в di
-        val textAnimation = AlphaAnimation(1.0f, 0.2f)
-        textAnimation.duration = 1800
-        textAnimation.repeatCount = Animation.INFINITE
-        textAnimation.repeatMode = Animation.REVERSE
+    private fun startTextFadingAnimation() {
         binding.hintTv.startAnimation(textAnimation)
     }
 
