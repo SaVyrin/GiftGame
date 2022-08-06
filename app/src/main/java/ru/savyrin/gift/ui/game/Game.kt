@@ -20,13 +20,18 @@ class Game {
         gameState = GameState.FINISHED
     }
 
-    fun beatPresent() {
+    fun beatPresent(): Boolean {
+        var isPresentBeaten = false
+
         val damage = CLICK_POWER * powerMultiplayer
         present.beat(damage)
         if (present.isOpen()) {
             setNewPresent()
+            isPresentBeaten = true
         }
         appendClickCombo()
+
+        return isPresentBeaten
     }
 
     private fun appendClickCombo() {

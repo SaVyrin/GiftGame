@@ -1,6 +1,7 @@
 package ru.savyrin.gift.ui.game
 
 import android.animation.ValueAnimator
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import ru.savyrin.gift.R
 import ru.savyrin.gift.databinding.FragmentGameBinding
@@ -35,6 +37,7 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeGameState()
+        observeCurrentPresent()
         setupPresentAnimation()
         setPresentClickListener()
         setLeftButtonClickListener()
@@ -65,6 +68,23 @@ class GameFragment : Fragment() {
     private fun setPresentHealth() {
         val presentHealth = viewModel.getPresentHealth()
         binding.presentHealthTv.text = presentHealth.toString()
+    }
+
+    private fun observeCurrentPresent() {
+        viewModel.currentPresent.observe(viewLifecycleOwner) { presentType ->
+            presentType?.also {
+                when (presentType) {
+                    PresentTypes.FIRST_PRESENT -> setNewPresentImage(R.drawable.present)
+                    PresentTypes.SECOND_PRESENT -> setNewPresentImage(R.drawable.present_2)
+                    PresentTypes.THIRD_PRESENT -> setNewPresentImage(R.drawable.present_3)
+                    PresentTypes.FOURTH_PRESENT -> setNewPresentImage(R.drawable.present_4)
+                }
+            }
+        }
+    }
+
+    private fun setNewPresentImage(presentImageId: Int) {
+        binding.presentImage.load(presentImageId)
     }
 
     private fun setPresentClickListener() {

@@ -9,6 +9,9 @@ class GameViewModel : ViewModel() {
     private val mutableGameState = MutableLiveData(GameState.NOT_STARTED)
     val gameState: LiveData<GameState> = mutableGameState
 
+    private val mutableCurrentPresent = MutableLiveData(PresentTypes.FIRST_PRESENT)
+    val currentPresent: LiveData<PresentTypes> = mutableCurrentPresent
+
     private val game = Game()
 
     fun startGame() {
@@ -20,7 +23,18 @@ class GameViewModel : ViewModel() {
     }
 
     fun beatPresent() {
-        game.beatPresent()
+        val isPresentBeaten = game.beatPresent()
+        if (isPresentBeaten) {
+            when (mutableCurrentPresent.value) {
+                PresentTypes.FIRST_PRESENT -> {
+                    mutableCurrentPresent.value = PresentTypes.SECOND_PRESENT
+                }
+                PresentTypes.SECOND_PRESENT -> {
+                    mutableCurrentPresent.value = PresentTypes.THIRD_PRESENT
+                }
+                else -> mutableCurrentPresent.value = PresentTypes.FOURTH_PRESENT
+            }
+        }
         mutableGameState.value = game.getGameState()
     }
 
