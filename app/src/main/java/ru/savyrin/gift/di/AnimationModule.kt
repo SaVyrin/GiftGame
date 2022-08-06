@@ -15,7 +15,6 @@ import javax.inject.Singleton
 object AnimationModule {
 
     @Provides
-    @Singleton
     @Named("infinite")
     fun provideInfiniteFadeAnimation(): AlphaAnimation {
         val textAnimation = AlphaAnimation(1.0f, 0.2f)
@@ -27,7 +26,6 @@ object AnimationModule {
     }
 
     @Provides
-    @Singleton
     @Named("single")
     fun provideFadeAnimation(): AlphaAnimation {
         val textAnimation = AlphaAnimation(1.0f, 0.0f)
@@ -39,7 +37,6 @@ object AnimationModule {
     }
 
     @Provides
-    @Singleton
     fun provideResizeAnimation(): ValueAnimator {
         val valueAnimator = ValueAnimator.ofFloat(1f, 0.9f, 1f)
         valueAnimator.duration = 100
