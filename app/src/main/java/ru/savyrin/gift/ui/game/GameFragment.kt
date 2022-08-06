@@ -1,7 +1,6 @@
 package ru.savyrin.gift.ui.game
 
 import android.animation.ValueAnimator
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +11,8 @@ import androidx.navigation.fragment.findNavController
 import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import ru.savyrin.gift.R
+import ru.savyrin.gift.data.game.GameState
+import ru.savyrin.gift.data.present.PresentTypes
 import ru.savyrin.gift.databinding.FragmentGameBinding
 import javax.inject.Inject
 

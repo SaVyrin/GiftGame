@@ -1,4 +1,4 @@
-package ru.savyrin.gift.ui.game
+package ru.savyrin.gift.data.combo
 
 enum class ComboMoves {
     CLICK,

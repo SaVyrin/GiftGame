@@ -1,4 +1,4 @@
-package ru.savyrin.gift.ui.game
+package ru.savyrin.gift.data.present
 
 enum class PresentTypes {
     FIRST_PRESENT,
