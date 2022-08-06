@@ -5,15 +5,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.ScaleAnimation
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import ru.savyrin.gift.R
 import ru.savyrin.gift.databinding.FragmentGameBinding
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class GameFragment : Fragment() {
+
+    @Inject
+    lateinit var valueAnimator: ValueAnimator
 
     private val viewModel: GameViewModel by viewModels()
 
@@ -31,6 +35,7 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeGameState()
+        setupPresentAnimation()
         setPresentClickListener()
         setLeftButtonClickListener()
         setRightButtonClickListener()
@@ -94,16 +99,15 @@ class GameFragment : Fragment() {
         }
     }
 
-    private fun startPresentBeatAnimation() {
-        ValueAnimator.ofFloat(1f, 0.9f, 1f).apply {
-            duration = 100
-            start()
-
-            addUpdateListener { updatedAnimation ->
-                binding.presentImage.scaleX = updatedAnimation.animatedValue as Float
-                binding.presentImage.scaleY = updatedAnimation.animatedValue as Float
-            }
+    private fun setupPresentAnimation() {
+        valueAnimator.addUpdateListener { updatedAnimation ->
+            binding.presentImage.scaleX = updatedAnimation.animatedValue as Float
+            binding.presentImage.scaleY = updatedAnimation.animatedValue as Float
         }
+    }
+
+    private fun startPresentBeatAnimation() {
+        valueAnimator.start()
     }
 
     override fun onDestroy() {
