@@ -1,5 +1,6 @@
 package ru.savyrin.gift.di
 
+import android.animation.ValueAnimator
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import dagger.Module
@@ -35,5 +36,14 @@ object AnimationModule {
         textAnimation.repeatMode = Animation.REVERSE
 
         return textAnimation
+    }
+
+    @Provides
+    @Singleton
+    fun provideResizeAnimation(): ValueAnimator {
+        val valueAnimator = ValueAnimator.ofFloat(1f, 0.9f, 1f)
+        valueAnimator.duration = 100
+
+        return valueAnimator
     }
 }

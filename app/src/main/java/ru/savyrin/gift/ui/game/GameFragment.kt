@@ -5,17 +5,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.ScaleAnimation
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import ru.savyrin.gift.R
 import ru.savyrin.gift.databinding.FragmentGameBinding
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class GameFragment : Fragment() {
+
+    @Inject
+    lateinit var valueAnimator: ValueAnimator
 
     private val viewModel: GameViewModel by viewModels()
 
@@ -97,8 +99,7 @@ class GameFragment : Fragment() {
     }
 
     private fun startPresentBeatAnimation() {
-        ValueAnimator.ofFloat(1f, 0.9f, 1f).apply {
-            duration = 100
+        valueAnimator.apply {
             start()
 
             addUpdateListener { updatedAnimation ->
