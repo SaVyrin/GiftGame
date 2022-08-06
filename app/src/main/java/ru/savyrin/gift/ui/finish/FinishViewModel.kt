@@ -8,12 +8,13 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class FinishViewModel(
-    private val greetings: Array<String>
+    _greetings: Array<String>
 ) : ViewModel() {
 
     private val mutableFinishScreenState = MutableLiveData(FinishScreenState.ANIMATING)
     val finishScreenState: LiveData<FinishScreenState> = mutableFinishScreenState
 
+    private val greetings = _greetings
     private var currentGreetingsIndex = 0
 
     fun getNextGreeting(): String {
@@ -39,7 +40,5 @@ class FinishViewModel(
         }
     }
 
-    private fun noMoreGreetings(): Boolean {
-        return currentGreetingsIndex == greetings.size
-    }
+    private fun noMoreGreetings() = (currentGreetingsIndex == greetings.size)
 }

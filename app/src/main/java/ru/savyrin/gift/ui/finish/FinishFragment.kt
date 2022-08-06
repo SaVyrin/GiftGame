@@ -54,14 +54,14 @@ class FinishFragment : Fragment() {
         viewModel.finishScreenState.observe(viewLifecycleOwner) { screenState ->
             screenState?.let {
                 when (screenState) {
-                    FinishScreenState.DONE -> {
-                        findNavController().navigate(R.id.action_finishFragment_to_startFragment)
-                    }
                     FinishScreenState.ANIMATING -> {
                         binding.blockScreen.isVisible = true
                     }
                     FinishScreenState.SHOWING_GREETINGS -> {
                         binding.blockScreen.isVisible = false
+                    }
+                    FinishScreenState.DONE -> {
+                        findNavController().navigate(R.id.action_finishFragment_to_startFragment)
                     }
                 }
             }

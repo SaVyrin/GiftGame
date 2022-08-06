@@ -1,5 +1,8 @@
-package ru.savyrin.gift.ui.game
+package ru.savyrin.gift.data.game
 
+import ru.savyrin.gift.data.present.Present
+import ru.savyrin.gift.data.combo.ComboController
+import ru.savyrin.gift.data.combo.ComboMoves
 import kotlin.math.pow
 
 class Game {
