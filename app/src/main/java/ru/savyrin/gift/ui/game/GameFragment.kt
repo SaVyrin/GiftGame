@@ -35,6 +35,7 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeGameState()
+        setupPresentAnimation()
         setPresentClickListener()
         setLeftButtonClickListener()
         setRightButtonClickListener()
@@ -98,15 +99,15 @@ class GameFragment : Fragment() {
         }
     }
 
-    private fun startPresentBeatAnimation() {
-        valueAnimator.apply {
-            start()
-
-            addUpdateListener { updatedAnimation ->
-                binding.presentImage.scaleX = updatedAnimation.animatedValue as Float
-                binding.presentImage.scaleY = updatedAnimation.animatedValue as Float
-            }
+    private fun setupPresentAnimation() {
+        valueAnimator.addUpdateListener { updatedAnimation ->
+            binding.presentImage.scaleX = updatedAnimation.animatedValue as Float
+            binding.presentImage.scaleY = updatedAnimation.animatedValue as Float
         }
+    }
+
+    private fun startPresentBeatAnimation() {
+        valueAnimator.start()
     }
 
     override fun onDestroy() {
