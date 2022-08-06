@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -56,8 +57,11 @@ class FinishFragment : Fragment() {
                     FinishScreenState.DONE -> {
                         findNavController().navigate(R.id.action_finishFragment_to_startFragment)
                     }
+                    FinishScreenState.ANIMATING -> {
+                        binding.blockScreen.isVisible = true
+                    }
                     FinishScreenState.SHOWING_GREETINGS -> {
-                        // Do nothing
+                        binding.blockScreen.isVisible = false
                     }
                 }
             }

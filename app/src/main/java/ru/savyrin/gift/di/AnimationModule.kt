@@ -17,7 +17,7 @@ object AnimationModule {
     @Provides
     @Named("infinite")
     fun provideInfiniteFadeAnimation(): AlphaAnimation {
-        val textAnimation = AlphaAnimation(1.0f, 0.2f)
+        val textAnimation = AlphaAnimation(0.2f, 1f)
         textAnimation.duration = 1800
         textAnimation.repeatCount = Animation.INFINITE
         textAnimation.repeatMode = Animation.REVERSE

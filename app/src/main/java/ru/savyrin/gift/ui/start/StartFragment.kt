@@ -1,6 +1,8 @@
 package ru.savyrin.gift.ui.start
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -34,14 +36,18 @@ class StartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setScreenClickListener()
+        setScreenClickListenerWithDelay()
         startTextFadingAnimation()
     }
 
-    private fun setScreenClickListener() {
-        binding.root.setOnClickListener {
-            findNavController().navigate(R.id.action_startFragment_to_gameFragment)
-        }
+    private fun setScreenClickListenerWithDelay() {
+        Handler(Looper.getMainLooper()).postDelayed(
+            {
+                binding.root.setOnClickListener {
+                    findNavController().navigate(R.id.action_startFragment_to_gameFragment)
+                }
+            }, 800
+        )
     }
 
     private fun startTextFadingAnimation() {
